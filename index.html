@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BDx — Email signature</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#2d43e8;--lime:#dcf42c;--ink:#13171a;--paper:#f7f7f7;--line:#e2e1dc;--mute:#6b7178;--field:#ffffff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:48px 24px 96px}
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:30px}
+  h1{font-size:clamp(28px,4vw,38px);font-weight:600;letter-spacing:-.025em;margin:0 0 10px}
+  .sub{color:var(--mute);font-size:15px;line-height:1.6;max-width:62ch;margin:0}
+  .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:26px 0 16px;border:1px solid var(--line);border-radius:5px;padding:18px;background:#fbfbfa}
+  label{display:block;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+  input[type=text]{width:100%;background:var(--field);border:1px solid var(--line);border-radius:5px;color:var(--ink);font-family:'Geist',sans-serif;font-size:13px;padding:9px 10px}
+  input[type=text]:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+  .hint{grid-column:1/-1;font-size:12px;color:var(--mute);line-height:1.5;margin:2px 0 0}
+  .bar{display:flex;gap:10px;align-items:center;margin:0 0 28px;font-size:13px;color:var(--mute)}
+  .card{border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-bottom:26px}
+  .card-head{padding:16px 18px;border-bottom:1px solid var(--line)}
+  .tag{font-family:'Geist Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:.1em}
+  .card-head h2{font-size:16px;font-weight:600;margin:0}
+  .card-head p{margin:5px 0 0;font-size:13px;color:var(--mute);max-width:62ch;line-height:1.55}
+  .stage{background:#fff;padding:32px 28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stage.dark{background:#1c2024}
+  .stage.dark .sim{filter:invert(1) hue-rotate(180deg)}
+  .stage.dark .sim img{filter:invert(1) hue-rotate(180deg)}
+  .actions{display:flex;gap:8px;padding:12px 18px;border-top:1px solid var(--line);flex-wrap:wrap}
+  button{font-family:'Geist',sans-serif;font-size:12px;background:var(--field);color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:8px 13px;cursor:pointer}
+  button:hover{border-color:var(--blue);color:var(--blue)}
+  button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  button.primary:hover{background:#2438c9;color:#fff}
+  button:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+  .note{padding:0 18px 16px;font-size:12.5px;color:var(--mute);line-height:1.6}
+  .note b{color:var(--ink);font-weight:600}
+  code{font-family:'Geist Mono',monospace;font-size:11.5px;background:#eceae4;padding:1px 5px;border-radius:3px;color:#3d434a}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--blue);color:#fff;font-size:13px;padding:10px 17px;border-radius:5px;transition:.2s;pointer-events:none;max-width:80vw;text-align:center}
+  .toast.on{opacity:1;transform:translateX(-50%)}
+  details{border-top:1px solid var(--line)}
+  summary{padding:12px 18px;cursor:pointer;font-size:12.5px;color:var(--mute)}
+  pre{margin:0;padding:0 18px 18px;overflow:auto;font-family:'Geist Mono',monospace;font-size:11px;line-height:1.6;color:#4d545b;white-space:pre-wrap;word-break:break-all}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>BDx Email Signature</h1>
+  <p class="sub">Fill in your details, then copy each signature into your mail client. Everyone sets <strong style="font-weight:600">two</strong> signatures: the full one for new messages, and the short one for replies and forwards.</p>
+</header>
+
+<div class="fields">
+  <div><label for="f-name">Name</label><input type="text" id="f-name" value="Mayank Srivastava"></div>
+  <div><label for="f-title">Job title</label><input type="text" id="f-title" value="Chief Executive Officer"></div>
+  <div><label for="f-mobile">Mobile</label><input type="text" id="f-mobile" value="+65 9816 1567"></div>
+  <div><label for="f-office">Office phone (optional)</label><input type="text" id="f-office" value=""></div>
+  <div><label for="f-email">Email</label><input type="text" id="f-email" value="mayank@bdxworld.com"></div>
+  <div><label for="f-a1">Address line 1</label><input type="text" id="f-a1" value="150 Beach Road, Gateway West"></div>
+  <div><label for="f-a2">Address line 2</label><input type="text" id="f-a2" value="Singapore 189720"></div>
+  <p class="hint">Leave any optional field empty to remove it. Line 1 is street and building; line 2 is city, country and postcode.</p>
+</div>
+
+<div class="bar">
+  <input type="checkbox" id="darkAll">
+  <label for="darkAll" style="margin:0;font-size:13px;text-transform:none;letter-spacing:0;color:inherit;font-family:inherit">Preview on dark background</label>
+</div>
+
+<div id="cards"></div>
+<p class="note" style="padding-left:0">Exported HTML references <code id="urlEcho"></code></p>
+<p class="note" style="padding-left:0;margin-top:-8px"><b>Interim host &mdash; demo only.</b> This logo is served from xumu.ai for testing. It must be repointed to bdxworld.com before anyone installs a signature for real use.</p>
+</div>
+<div class="toast" id="toast">Copied</div>
+
+<script>
+const LOGOS = {"brand": "data:image/png;base64,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"};
+const FF = "'Segoe UI',Roboto,'Helvetica Neue',Helvetica,Arial,sans-serif";
+const B = "#2d43e8", INK = "#13171a", GREY = "#5a6169";
+/* ── EDIT THIS ONE LINE when the logo is uploaded ──────────────────────
+   Must be a PNG (SVG does not render in Outlook or Gmail),
+   168x96px, transparent background, permanent public URL.          */
+const LOGO_URL = "https://www.xumu.ai/wp-content/uploads/2026/08/bdx-signature-logo.png";
+const LW = 84, LH = 48;
+const LI_URL = "https://www.linkedin.com/company/bdx-data-centers";
+const SEP = '<span style="color:#c2c6cb;">&nbsp;&nbsp;/&nbsp;&nbsp;</span>';
+
+const a = (href, text) => `<a href="${href}" style="color:${B};text-decoration:none;">${text}</a>`;
+const lbl = t => `<span style="color:#9aa0a6;">${t}&nbsp;</span>`;
+const img = src => `<img src="${src}" width="${LW}" height="${LH}" alt="BDx Data Centers" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;">`;
+const tel = s => s.replace(/[^\d+]/g, '');
+
+function data(){
+  const g = id => document.getElementById(id).value.trim();
+  return {name:g('f-name'), title:g('f-title'), mobile:g('f-mobile'),
+          office:g('f-office'), email:g('f-email'), a1:g('f-a1'), a2:g('f-a2')};
+}
+
+function addrRows(v){
+  const L = [v.a1, v.a2].filter(Boolean);
+  if(!L.length) return '';
+  return L.map((t,i) =>
+    `<tr><td style="font-family:${FF};font-size:12px;line-height:17px;color:#8c9298;padding:${i===0?'7px':'0'} 0 0 0;">${t}</td></tr>`
+  ).join('');
+}
+
+/* Full signature — new messages */
+function sigFull(v, logo){
+  const l1 = [];
+  if(v.mobile) l1.push(lbl('M') + a('tel:'+tel(v.mobile), v.mobile));
+  if(v.office) l1.push(lbl('O') + a('tel:'+tel(v.office), v.office));
+  if(v.email)  l1.push(a('mailto:'+v.email, v.email));
+  const l2 = [a('https://www.bdxworld.com','bdxworld.com'), a(LI_URL,'LinkedIn')];
+  return `<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;"><tbody>
+<tr><td style="font-family:${FF};font-size:15px;line-height:20px;font-weight:700;color:${INK};padding:0 0 2px 0;">${v.name}</td></tr>
+<tr><td style="font-family:${FF};font-size:13px;line-height:18px;color:${GREY};padding:0 0 12px 0;">${v.title}</td></tr>
+<tr><td style="font-family:${FF};font-size:13px;line-height:20px;color:${GREY};padding:0;">${l1.join(SEP)}</td></tr>
+<tr><td style="font-family:${FF};font-size:13px;line-height:20px;color:${GREY};padding:0;">${l2.join(SEP)}</td></tr>
+${addrRows(v)}
+<tr><td style="padding:14px 0 0 0;">${img(logo)}</td></tr>
+</tbody></table>`;
+}
+
+/* Reply signature — replies and forwards, no images */
+function sigReply(v){
+  const b = [];
+  if(v.mobile) b.push(a('tel:'+tel(v.mobile), v.mobile));
+  if(v.email)  b.push(a('mailto:'+v.email, v.email));
+  return `<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;"><tbody>
+<tr><td style="font-family:${FF};font-size:13px;line-height:19px;color:${INK};padding:0;"><b style="font-weight:700;">${v.name}</b><span style="color:#c2c6cb;">&nbsp;&nbsp;/&nbsp;&nbsp;</span><span style="color:${GREY};">${v.title}</span></td></tr>
+<tr><td style="font-family:${FF};font-size:13px;line-height:19px;color:${GREY};padding:0;"><span style="color:${B};font-weight:700;">BDx Data Centers</span>${b.length?SEP:''}${b.join(SEP)}</td></tr>
+</tbody></table>`;
+}
+
+const SIGS = [
+ {id:'A', name:'Full signature — new messages',
+  desc:'Name, job title, phone and email, then web and LinkedIn, address, and the wordmark. Set this as your default signature for new messages.',
+  note:'The first line closes up automatically if you have no office phone. Leave the address fields empty if you would rather not include one.',
+  preview: v => sigFull(v, LOGOS.brand),
+  export:  v => sigFull(v, LOGO_URL)},
+ {id:'E', name:'Reply signature — replies and forwards',
+  desc:'Two lines, no logo image. The company name is styled text, so it can never be blocked and adapts to dark mode on its own.',
+  note:'<b>Set this separately as your replies and forwards signature.</b> It stops long email threads filling up with a copy of the logo per message.',
+  preview: v => sigReply(v),
+  export:  v => sigReply(v)}
+];
+
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function render(){
+  const v = data(), dark = document.getElementById('darkAll').checked;
+  document.getElementById('cards').innerHTML = SIGS.map(x => `
+   <div class="card">
+    <div class="card-head"><h2><span class="tag">${x.id}</span>&nbsp;&nbsp;${x.name}</h2><p>${x.desc}</p></div>
+    <div class="stage ${dark?'dark':''}"><div class="sim">${x.preview(v)}</div></div>
+    <div class="actions"><button class="primary" data-copy="${x.id}">Copy signature</button><button data-source="${x.id}">Copy HTML</button></div>
+    <p class="note">${x.note}</p>
+    <details><summary>View HTML</summary><pre>${esc(x.export(v))}</pre></details>
+   </div>`).join('');
+}
+
+document.addEventListener('click', async e => {
+  const rich = e.target.dataset.copy, src = e.target.dataset.source;
+  if(!rich && !src) return;
+  const v = data(), x = SIGS.find(y => y.id === (rich||src));
+  const html = rich ? x.preview(v) : x.export(v);
+  try{
+    if(rich){
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([html], {type:'text/html'}),
+        'text/plain': new Blob([html], {type:'text/plain'})})]);
+      toast('Signature copied — paste into your mail client');
+    } else {
+      await navigator.clipboard.writeText(html);
+      toast('HTML copied');
+    }
+  }catch(err){ toast('Your browser blocked the copy — open “View HTML” and copy it manually'); }
+});
+
+let t;
+function toast(m){
+  const el = document.getElementById('toast');
+  el.textContent = m; el.classList.add('on');
+  clearTimeout(t); t = setTimeout(() => el.classList.remove('on'), 2600);
+}
+document.getElementById('urlEcho').textContent = LOGO_URL;
+document.querySelectorAll('input').forEach(i => i.addEventListener('input', render));
+render();
+</script>
+</body></html>
